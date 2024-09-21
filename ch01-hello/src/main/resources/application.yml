@@ -1,0 +1,38 @@
+# web server
+server:
+  port: 9080
+  servlet:
+    context-path: /myapp
+
+# spring
+spring:
+  application:
+    name: hello-h2
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    platform: h2
+  jpa:
+#    hibernate:
+#      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+
+
+# logging
+logging:
+  level:
+    root: DEBUG
+    org:
+      springframework: DEBUG
+
