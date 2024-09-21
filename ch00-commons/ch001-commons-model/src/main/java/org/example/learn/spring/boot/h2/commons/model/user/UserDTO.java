@@ -3,7 +3,7 @@ package org.example.learn.spring.boot.h2.commons.model.user;
 import java.io.Serializable;
 import java.util.Date;
 
-public class UserPO implements Serializable {
+public class UserDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
