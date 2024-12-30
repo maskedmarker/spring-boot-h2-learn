@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ch001-commons-model</module>
+        <module>ch002-h2-server-mode</module>
     </modules>
 
 </project>
