@@ -11,6 +11,8 @@ import java.sql.SQLException;
  * WebServer启动了WebApp,用来处理console页面的请求
  * console页面的请求包括执行数据库脚本,这些请求被WebServer接收到之后,
  * 提取http报文中的sql脚本,然后操作java.sql.Connection执行sql脚本
+ *
+ * WebServer模式下,外部进程是无法访问jdbc连接的
  */
 public class H2WebServer {
 
