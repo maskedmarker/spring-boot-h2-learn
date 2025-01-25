@@ -35,7 +35,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.learn.spring.boot.h2.server.H2ServerBootstrap</mainClass>
+                            <mainClass>org.example.learn.spring.boot.h2.server.H2TcpServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

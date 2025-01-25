@@ -14,7 +14,6 @@
     <modules>
         <module>ch001-commons-model</module>
         <module>ch002-h2-server-mode</module>
-        <module>ch003-h2-server-mode-console</module>
     </modules>
 
 </project>
