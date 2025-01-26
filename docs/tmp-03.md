@@ -1,3 +1,9 @@
+# spring-boot与h2
+
+spring-boot的auto-configure支持在启动过程中,针对数据库执行创建schema和执行初始化脚本.
+在spring的抽象模型里,spring将非embedded-database与datasource看作是2个相对对立的概念;而embedded-database本身看作是datasource.
+
+
 
 
 ```text
@@ -171,3 +177,6 @@ class DataSourceInitializer {
 
 }
 ```
+
+### 单词 populate
+( computing 计)to add data to a document（给文件）增添数据，输入数据
