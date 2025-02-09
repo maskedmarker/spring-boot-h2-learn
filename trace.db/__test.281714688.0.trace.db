@@ -1,0 +1,3429 @@
+2025-02-09 18:23:41 jdbc: 
+/**/Connection conn1 = DriverManager.getConnection("jdbc:h2:tcp://192.168.1.2:9092/~/test;TRACE_LEVEL_FILE=3;TRACE_LEVEL_SYSTEM_OUT=3", "SA", "");
+2025-02-09 18:23:41 jdbc: 
+/**/DatabaseMetaData dbMeta3 = conn1.getMetaData();
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep13 = conn1.prepareStatement("SELECT NAME, VALUE FROM INFORMATION_SCHEMA.SETTINGS WHERE NAME IN (?, ?, ?, ?)");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 0
+2025-02-09 18:23:42 jdbc: 
+/**/prep13.setString(1, "MODE");
+2025-02-09 18:23:42 jdbc: 
+/**/prep13.setString(2, "DATABASE_TO_UPPER");
+2025-02-09 18:23:42 jdbc: 
+/**/prep13.setString(3, "DATABASE_TO_LOWER");
+2025-02-09 18:23:42 jdbc: 
+/**/prep13.setString(4, "CASE_INSENSITIVE_IDENTIFIERS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs48 = prep13.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 0
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 1
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.getString(2);
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.getString(1);
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.getString(2);
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.getString(1);
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.getString(2);
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.getString(1);
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.getString(2);
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.getString(1);
+2025-02-09 18:23:42 jdbc: 
+/**/rs48.next();
+2025-02-09 18:23:42 jdbc: 
+/**/prep13.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 0
+2025-02-09 18:23:42 jdbc: 
+/**/DatabaseMetaData dbMeta4 = conn1.getMetaData();
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta4.getSchemas();
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep14 = conn1.prepareStatement("SELECT SCHEMA_NAME TABLE_SCHEM, CATALOG_NAME TABLE_CATALOG,  IS_DEFAULT FROM INFORMATION_SCHEMA.SCHEMATA ORDER BY SCHEMA_NAME");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 2
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs49 = prep14.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 2
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 3
+2025-02-09 18:23:42 jdbc: 
+/**/rs49.findColumn("IS_DEFAULT");
+2025-02-09 18:23:42 jdbc: 
+/**/rs49.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs49.getBoolean(3);
+2025-02-09 18:23:42 jdbc: 
+/**/rs49.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs49.getBoolean(3);
+2025-02-09 18:23:42 jdbc: 
+/**/rs49.getString("TABLE_SCHEM");
+2025-02-09 18:23:42 jdbc: 
+/**/rs49.next();
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta4.getSchemas();
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep15 = conn1.prepareStatement("SELECT SCHEMA_NAME TABLE_SCHEM, CATALOG_NAME TABLE_CATALOG,  IS_DEFAULT FROM INFORMATION_SCHEMA.SCHEMATA ORDER BY SCHEMA_NAME");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 4
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs50 = prep15.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 4
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 5
+2025-02-09 18:23:42 jdbc: 
+/**/rs50.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs50.getString("TABLE_SCHEM");
+2025-02-09 18:23:42 jdbc: 
+/**/rs50.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs50.getString("TABLE_SCHEM");
+2025-02-09 18:23:42 jdbc: 
+/**/rs50.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs50.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep15.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 4
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta4.getTables(null, "INFORMATION_SCHEMA", null, new String[]{"TABLE", "SYSTEM TABLE", "VIEW", "SYSTEM VIEW", "TABLE LINK", "SYNONYM", "EXTERNAL"});
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep16 = conn1.prepareStatement("SELECT TABLE_CAT, TABLE_SCHEM, TABLE_NAME, TABLE_TYPE, REMARKS, TYPE_CAT, TYPE_SCHEM, TYPE_NAME, SELF_REFERENCING_COL_NAME, REF_GENERATION, SQL FROM (SELECT SYNONYM_CATALOG TABLE_CAT, SYNONYM_SCHEMA TABLE_SCHEM, SYNONYM_NAME as TABLE_NAME, TYPE_NAME AS TABLE_TYPE, REMARKS, TYPE_NAME TYPE_CAT, TYPE_NAME TYPE_SCHEM, TYPE_NAME AS TYPE_NAME, TYPE_NAME SELF_REFERENCING_COL_NAME, TYPE_NAME REF_GENERATION, NULL AS SQL FROM INFORMATION_SCHEMA.SYNONYMS WHERE SYNONYM_CATALOG LIKE ?1 ESCAPE ?4 AND SYNONYM_SCHEMA LIKE ?2 ESCAPE ?4 AND SYNONYM_NAME LIKE ?3 ESCAPE ?4 UNION SELECT TABLE_CATALOG TABLE_CAT, TABLE_SCHEMA TABLE_SCHEM, TABLE_NAME, TABLE_TYPE, REMARKS, TYPE_NAME TYPE_CAT, TYPE_NAME TYPE_SCHEM, TYPE_NAME, TYPE_NAME SELF_REFERENCING_COL_NAME, TYPE_NAME REF_GENERATION, SQL FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_CATALOG LIKE ?1 ESCAPE ?4 AND TABLE_SCHEMA LIKE ?2 ESCAPE ?4 AND TABLE_NAME LIKE ?3 ESCAPE ?4 AND TABLE_TYPE IN(?5, ?6, ?7, ?8, ?9, ?10, ?11)) ORDER BY TABLE_TYPE, TABLE_SCHEM, TABLE_NAME");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 6
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(1, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(2, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(3, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(4, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(5, "TABLE");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(6, "SYSTEM TABLE");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(7, "VIEW");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(8, "SYSTEM VIEW");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(9, "TABLE LINK");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(10, "SYNONYM");
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.setString(11, "EXTERNAL");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs51 = prep16.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 6
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 7
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs51.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep16.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 6
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta4.getConnection();
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep17 = conn1.prepareStatement("SELECT COLUMN_NAME, ORDINAL_POSITION, COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ?");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 8
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "CATALOGS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs52 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 9
+2025-02-09 18:23:42 jdbc: 
+/**/rs52.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs52.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs52.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs52.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs52.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs52.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "COLLATIONS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs53 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 10
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs53.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "COLUMNS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs54 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 11
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs54.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "COLUMN_PRIVILEGES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs55 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 12
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs55.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "CONSTANTS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs56 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 13
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs56.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "CONSTRAINTS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs57 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 14
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs57.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "CROSS_REFERENCES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs58 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 15
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs58.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "DOMAINS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs59 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 16
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs59.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "FUNCTION_ALIASES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs60 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 17
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs60.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "FUNCTION_COLUMNS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs61 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 18
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs61.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "HELP");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs62 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 19
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs62.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "INDEXES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs63 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 20
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs63.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "IN_DOUBT");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs64 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 21
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs64.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "KEY_COLUMN_USAGE");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs65 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 22
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs65.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "LOCKS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs66 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 23
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs66.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "QUERY_STATISTICS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs67 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 24
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs67.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "REFERENTIAL_CONSTRAINTS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs68 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 25
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs68.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "RIGHTS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs69 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 26
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs69.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "ROLES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs70 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 27
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs70.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "SCHEMATA");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs71 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 28
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs71.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "SEQUENCES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs72 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 29
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs72.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "SESSIONS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs73 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 30
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs73.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "SESSION_STATE");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs74 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 31
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs74.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "SETTINGS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs75 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 32
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs75.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "SYNONYMS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs76 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 33
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs76.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "TABLES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs77 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 34
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs77.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "TABLE_CONSTRAINTS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs78 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 35
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs78.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "TABLE_PRIVILEGES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs79 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 36
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs79.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "TABLE_TYPES");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs80 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 37
+2025-02-09 18:23:42 jdbc: 
+/**/rs80.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs80.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs80.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs80.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs80.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs80.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "TRIGGERS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs81 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 38
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs81.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "TYPE_INFO");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs82 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 39
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs82.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "USERS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs83 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 40
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs83.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(1, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.setString(2, "VIEWS");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs84 = prep17.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 8
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 41
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs84.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep17.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 8
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta4.getProcedures(null, "INFORMATION_SCHEMA", null);
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep18 = conn1.prepareStatement("SELECT ALIAS_CATALOG PROCEDURE_CAT, ALIAS_SCHEMA PROCEDURE_SCHEM, ALIAS_NAME PROCEDURE_NAME, COLUMN_COUNT NUM_INPUT_PARAMS, ZERO() NUM_OUTPUT_PARAMS, ZERO() NUM_RESULT_SETS, REMARKS, RETURNS_RESULT PROCEDURE_TYPE, ALIAS_NAME SPECIFIC_NAME FROM INFORMATION_SCHEMA.FUNCTION_ALIASES WHERE ALIAS_CATALOG LIKE ? ESCAPE ? AND ALIAS_SCHEMA LIKE ? ESCAPE ? AND ALIAS_NAME LIKE ? ESCAPE ? ORDER BY PROCEDURE_SCHEM, PROCEDURE_NAME, NUM_INPUT_PARAMS");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 42
+2025-02-09 18:23:42 jdbc: 
+/**/prep18.setString(1, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep18.setString(2, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/prep18.setString(3, "INFORMATION_SCHEMA");
+2025-02-09 18:23:42 jdbc: 
+/**/prep18.setString(4, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/prep18.setString(5, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep18.setString(6, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs85 = prep18.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 42
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 43
+2025-02-09 18:23:42 jdbc: 
+/**/rs85.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs85.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep18.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 42
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta4.getTables(null, "PUBLIC", null, new String[]{"TABLE", "SYSTEM TABLE", "VIEW", "SYSTEM VIEW", "TABLE LINK", "SYNONYM", "EXTERNAL"});
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep19 = conn1.prepareStatement("SELECT TABLE_CAT, TABLE_SCHEM, TABLE_NAME, TABLE_TYPE, REMARKS, TYPE_CAT, TYPE_SCHEM, TYPE_NAME, SELF_REFERENCING_COL_NAME, REF_GENERATION, SQL FROM (SELECT SYNONYM_CATALOG TABLE_CAT, SYNONYM_SCHEMA TABLE_SCHEM, SYNONYM_NAME as TABLE_NAME, TYPE_NAME AS TABLE_TYPE, REMARKS, TYPE_NAME TYPE_CAT, TYPE_NAME TYPE_SCHEM, TYPE_NAME AS TYPE_NAME, TYPE_NAME SELF_REFERENCING_COL_NAME, TYPE_NAME REF_GENERATION, NULL AS SQL FROM INFORMATION_SCHEMA.SYNONYMS WHERE SYNONYM_CATALOG LIKE ?1 ESCAPE ?4 AND SYNONYM_SCHEMA LIKE ?2 ESCAPE ?4 AND SYNONYM_NAME LIKE ?3 ESCAPE ?4 UNION SELECT TABLE_CATALOG TABLE_CAT, TABLE_SCHEMA TABLE_SCHEM, TABLE_NAME, TABLE_TYPE, REMARKS, TYPE_NAME TYPE_CAT, TYPE_NAME TYPE_SCHEM, TYPE_NAME, TYPE_NAME SELF_REFERENCING_COL_NAME, TYPE_NAME REF_GENERATION, SQL FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_CATALOG LIKE ?1 ESCAPE ?4 AND TABLE_SCHEMA LIKE ?2 ESCAPE ?4 AND TABLE_NAME LIKE ?3 ESCAPE ?4 AND TABLE_TYPE IN(?5, ?6, ?7, ?8, ?9, ?10, ?11)) ORDER BY TABLE_TYPE, TABLE_SCHEM, TABLE_NAME");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 44
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(1, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(2, "PUBLIC");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(3, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(4, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(5, "TABLE");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(6, "SYSTEM TABLE");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(7, "VIEW");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(8, "SYSTEM VIEW");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(9, "TABLE LINK");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(10, "SYNONYM");
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.setString(11, "EXTERNAL");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs86 = prep19.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 44
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 45
+2025-02-09 18:23:42 jdbc: 
+/**/rs86.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs86.getString("TABLE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs86.getString("TABLE_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs86.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs86.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep19.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 44
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta4.getConnection();
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep20 = conn1.prepareStatement("SELECT COLUMN_NAME, ORDINAL_POSITION, COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ?");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 46
+2025-02-09 18:23:42 jdbc: 
+/**/prep20.setString(1, "PUBLIC");
+2025-02-09 18:23:42 jdbc: 
+/**/prep20.setString(2, "USER");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs87 = prep20.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 46
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 47
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getInt("ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.getString("COLUMN_TYPE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs87.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep20.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 46
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta4.getProcedures(null, "PUBLIC", null);
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep21 = conn1.prepareStatement("SELECT ALIAS_CATALOG PROCEDURE_CAT, ALIAS_SCHEMA PROCEDURE_SCHEM, ALIAS_NAME PROCEDURE_NAME, COLUMN_COUNT NUM_INPUT_PARAMS, ZERO() NUM_OUTPUT_PARAMS, ZERO() NUM_RESULT_SETS, REMARKS, RETURNS_RESULT PROCEDURE_TYPE, ALIAS_NAME SPECIFIC_NAME FROM INFORMATION_SCHEMA.FUNCTION_ALIASES WHERE ALIAS_CATALOG LIKE ? ESCAPE ? AND ALIAS_SCHEMA LIKE ? ESCAPE ? AND ALIAS_NAME LIKE ? ESCAPE ? ORDER BY PROCEDURE_SCHEM, PROCEDURE_NAME, NUM_INPUT_PARAMS");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 48
+2025-02-09 18:23:42 jdbc: 
+/**/prep21.setString(1, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep21.setString(2, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/prep21.setString(3, "PUBLIC");
+2025-02-09 18:23:42 jdbc: 
+/**/prep21.setString(4, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/prep21.setString(5, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep21.setString(6, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs88 = prep21.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 48
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 49
+2025-02-09 18:23:42 jdbc: 
+/**/rs88.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs88.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep21.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 48
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta3.getIndexInfo(null, "PUBLIC", "USER", false, true);
+2025-02-09 18:23:42 jdbc: 
+/**/PreparedStatement prep22 = conn1.prepareStatement("SELECT TABLE_CATALOG TABLE_CAT, TABLE_SCHEMA TABLE_SCHEM, TABLE_NAME, NON_UNIQUE, TABLE_CATALOG INDEX_QUALIFIER, INDEX_NAME, INDEX_TYPE TYPE, ORDINAL_POSITION, COLUMN_NAME, ASC_OR_DESC, CARDINALITY, PAGES, FILTER_CONDITION, SORT_TYPE FROM INFORMATION_SCHEMA.INDEXES WHERE TABLE_CATALOG LIKE ? ESCAPE ? AND TABLE_SCHEMA LIKE ? ESCAPE ? AND (TRUE) AND TABLE_NAME = ? ORDER BY NON_UNIQUE, TYPE, TABLE_SCHEM, INDEX_NAME, ORDINAL_POSITION");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 50
+2025-02-09 18:23:42 jdbc: 
+/**/prep22.setString(1, "%");
+2025-02-09 18:23:42 jdbc: 
+/**/prep22.setString(2, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/prep22.setString(3, "PUBLIC");
+2025-02-09 18:23:42 jdbc: 
+/**/prep22.setString(4, "\\");
+2025-02-09 18:23:42 jdbc: 
+/**/prep22.setString(5, "USER");
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs89 = prep22.executeQuery();
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 50
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 51
+2025-02-09 18:23:42 jdbc: 
+/**/rs89.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs89.close();
+2025-02-09 18:23:42 jdbc: 
+/**/prep22.close();
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 50
+2025-02-09 18:23:42 jdbc: 
+/**/Statement stat2 = conn1.createStatement();
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs90 = stat2.executeQuery("SELECT * FROM INFORMATION_SCHEMA.SEQUENCES ORDER BY SEQUENCE_NAME");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 52
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 52
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 53
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 52
+2025-02-09 18:23:42 jdbc: 
+/**/rs90.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs90.getString("SEQUENCE_NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs90.getString("CURRENT_VALUE");
+2025-02-09 18:23:42 jdbc: 
+/**/rs90.getString("INCREMENT");
+2025-02-09 18:23:42 jdbc: 
+/**/rs90.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs90.close();
+2025-02-09 18:23:42 jdbc: 
+/**/ResultSet rs91 = stat2.executeQuery("SELECT * FROM INFORMATION_SCHEMA.USERS ORDER BY NAME");
+2025-02-09 18:23:42 jdbc: SESSION_PREPARE_READ_PARAMS2 54
+2025-02-09 18:23:42 jdbc: COMMAND_EXECUTE_QUERY 54
+2025-02-09 18:23:42 jdbc: RESULT_CLOSE 55
+2025-02-09 18:23:42 jdbc: COMMAND_CLOSE 54
+2025-02-09 18:23:42 jdbc: 
+/**/rs91.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs91.getString("NAME");
+2025-02-09 18:23:42 jdbc: 
+/**/rs91.getString("ADMIN");
+2025-02-09 18:23:42 jdbc: 
+/**/rs91.next();
+2025-02-09 18:23:42 jdbc: 
+/**/rs91.close();
+2025-02-09 18:23:42 jdbc: 
+/**/stat2.close();
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta3.getDatabaseProductName();
+2025-02-09 18:23:42 jdbc: 
+/**/dbMeta3.getDatabaseProductVersion();

@@ -4,7 +4,32 @@ spring-boot的auto-configure支持在启动过程中,针对数据库执行创建
 在spring的抽象模型里,spring将非embedded-database与datasource看作是2个相对对立的概念;而embedded-database本身看作是datasource.
 
 
+## h2管理台
+h2的console界面需要servlet容器环境才能将console的http-endpoint暴露出来
 
+```text
+@ConditionalOnWebApplication(type = Type.SERVLET)
+public class H2ConsoleAutoConfiguration {
+
+	private static final Log logger = LogFactory.getLog(H2ConsoleAutoConfiguration.class);
+
+	@Bean
+	public ServletRegistrationBean<WebServlet> h2Console(H2ConsoleProperties properties, ObjectProvider<DataSource> dataSource) {
+		String path = properties.getPath();
+		String urlMapping = path + (path.endsWith("/") ? "*" : "/*");
+		ServletRegistrationBean<WebServlet> registration = new ServletRegistrationBean<>(new WebServlet(), urlMapping);
+		H2ConsoleProperties.Settings settings = properties.getSettings();
+		if (settings.isTrace()) {
+			registration.addInitParameter("trace", "");
+		}
+		if (settings.isWebAllowOthers()) {
+			registration.addInitParameter("webAllowOthers", "");
+		}
+		return registration;
+	}
+
+}
+```
 
 ```text
 @Import({ DataSourcePoolMetadataProvidersConfiguration.class, DataSourceInitializationConfiguration.class })

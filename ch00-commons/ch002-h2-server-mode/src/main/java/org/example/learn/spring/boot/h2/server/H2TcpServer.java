@@ -14,7 +14,7 @@ public class H2TcpServer {
         try {
             // Start H2 in TCP Server mode
             TcpServer service = new TcpServer();
-            Server tcpServer = new Server(service, "-tcp", "-tcpAllowOthers", "-tcpPort", "9092");
+            Server tcpServer = new Server(service, "-tcp", "-tcpAllowOthers", "-tcpPort", "9092", "-ifNotExists", "-trace");
             service.setShutdownHandler(tcpServer);
             tcpServer.start();
             System.out.println("H2 Database Server started and running at: " + tcpServer.getURL());

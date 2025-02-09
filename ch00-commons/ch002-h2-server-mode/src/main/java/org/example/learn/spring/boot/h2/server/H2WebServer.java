@@ -6,7 +6,7 @@ import org.h2.tools.Server;
 import java.sql.SQLException;
 
 /**
- * 不仅启动h2数据库,还启动了console管理台
+ * WebServer不仅启动h2数据库实例,还启动了console管理台
  *
  * WebServer启动了WebApp,用来处理console页面的请求
  * console页面的请求包括执行数据库脚本,这些请求被WebServer接收到之后,
@@ -28,7 +28,7 @@ public class H2WebServer {
 
     private static void start0(String[] args) throws SQLException {
         // -ifNotExists 当数据库不存在时,自动创建
-        Server h2WebServer = Server.createWebServer("-webPort", "8082", "-ifNotExists");
+        Server h2WebServer = Server.createWebServer("-webPort", "8082", "-ifNotExists", "-trace");
         h2WebServer.start();
         System.out.println("H2 Database Server started and running at: " + h2WebServer.getURL());
     }
