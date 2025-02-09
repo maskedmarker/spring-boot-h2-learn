@@ -73,3 +73,6 @@ jdbc:h2:tcp://192.168.1.2:9092/~/test;TRACE_LEVEL_FILE=3;TRACE_LEVEL_SYSTEM_OUT=
 jdbc:h2:mem:testdb;TRACE_LEVEL_FILE=3;TRACE_LEVEL_SYSTEM_OUT=3
 
 ```
+
+## 持久化
+当使用文件来持久化h2数据时,数据库文件保存在windows当前用户目录下.
