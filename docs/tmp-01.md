@@ -75,4 +75,36 @@ jdbc:h2:mem:testdb;TRACE_LEVEL_FILE=3;TRACE_LEVEL_SYSTEM_OUT=3
 ```
 
 ## 持久化
-当使用文件来持久化h2数据时,数据库文件保存在windows当前用户目录下.
+
+```text
+H2 can persist data to disk in server mode. 
+In fact, this is one of the main use cases for running H2 in server mode. 
+By default, when you run H2 in server mode, the database can be configured to use a file-based database that stores its data on disk rather than in memory.
+```
+
+### File-based Databases
+
+You can configure H2 to store its data on disk by using a file-based connection URL. This way, the data is persisted across server restarts.
+
+If you choose a file-based database, the data will be stored in a .mv.db file (H2 database file format).
+This file will persist across server restarts.
+
+Example of a file-based database URL:
+```text
+jdbc:h2:tcp://localhost:9092/~/mydb
+
+~/mydb: This will create or use a file-based database named mydb in the home directory of the user running the H2 server
+```
+
+### Specify Database Location
+
+You can specify the exact location of the database file
+
+```text
+jdbc:h2:tcp://localhost:9092/absolute/path/to/db/mydb
+```
+
+### In-memory Database
+
+If you use an in-memory database (e.g., jdbc:h2:tcp://localhost:9092/mem:test),
+the data will only persist for the duration of the server session, and it will be lost when the server is stopped.
