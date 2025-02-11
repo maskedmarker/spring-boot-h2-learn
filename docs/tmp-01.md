@@ -1,6 +1,6 @@
 # h2 doc
 
-官方文档
+## 官方文档
 http://www.h2database.com/html/tutorial.html
 http://www.h2database.com/html/quickstart.html
 
@@ -19,6 +19,8 @@ Set the JDBC driver class of your database, the JDBC URL, user name, and passwor
 You can save and reuse previously saved settings. The settings are stored in a properties file (see Settings of the H2 Console).
 ```
 
+## 启动
+
 h2-<version>.jar包含main类,支持java -jar启动方式.
 ```text
 java -cp h2-<version>.jar org.h2.tools.Server -tcp -tcpAllowOthers -ifNotExists -trace
@@ -31,6 +33,7 @@ java -cp h2-<version>.jar org.h2.tools.Server -tcp -tcpAllowOthers -ifNotExists 
 org.h2.tools.Server是h2的启动类,如果需要其他flag option,可以查看org.h2.tools.Server
 ```
 
+备注: 默认用户为sa,且密码为空字符串
 
 org.h2.tools.Server是h2服务启动类
 org.h2.server.Service是h2服务(tcp/web/pg)具体的实现类
