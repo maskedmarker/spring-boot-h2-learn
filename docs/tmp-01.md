@@ -87,7 +87,7 @@ By default, when you run H2 in server mode, the database can be configured to us
 
 ### File-based Databases
 
-You can configure H2 to store its data on disk by using a file-based connection URL. This way, the data is persisted across server restarts.
+You can configure H2 to store its data on disk by using **a file-based connection URL**. This way, the data is persisted across server restarts.
 
 If you choose a file-based database, the data will be stored in a .mv.db file (H2 database file format).
 This file will persist across server restarts.
