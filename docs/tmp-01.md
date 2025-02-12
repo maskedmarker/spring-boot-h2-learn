@@ -111,3 +111,17 @@ jdbc:h2:tcp://localhost:9092/absolute/path/to/db/mydb
 
 If you use an in-memory database (e.g., jdbc:h2:tcp://localhost:9092/mem:test),
 the data will only persist for the duration of the server session, and it will be lost when the server is stopped.
+
+因为h2是基于jdbc-url来决定是否是文件持久化或者内存临时保存数据的.
+可以通过 **mem:myDbName** 这样的形式来使用其他h2进程的内存数据库.
+
+```text
+内存保存的url存在用mem:作为特殊修饰符
+
+内存保存的  jdbc:h2:tcp://ip:port/mem:dbName
+文件保存的  jdbc:h2:tcp://ip:port/path/to/dbFileName
+
+比如:
+jdbc:h2:tcp://30.0.102.91:9092/mem:test0
+jdbc:h2:tcp://30.0.102.91:9092/~/myH2/test01
+```
