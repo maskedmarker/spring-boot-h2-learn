@@ -37,10 +37,10 @@ public class H2WebServer {
         WebServer service = new WebServer();
         service.setKey(null);
         service.setAllowSecureCreation(false);
-        Server server = new Server(service, "-webPort", "8082", "-ifNotExists");
-        service.setShutdownHandler(server);
-        server.start();
+        Server h2Server = new Server(service, "-webPort", "8082", "-ifNotExists");
+        service.setShutdownHandler(h2Server);
+        h2Server.start();
 
-        System.out.println("H2 Database Server started and running at: " + server.getURL());
+        System.out.println("H2 Database Server started and running at: " + h2Server.getURL());
     }
 }
