@@ -2,6 +2,7 @@ package org.example.learn.spring.boot.h2.commons.model.user;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.StringJoiner;
 
 public class UserPO implements Serializable {
 
@@ -12,6 +13,9 @@ public class UserPO implements Serializable {
     private String name;
 
     private String email;
+
+    // 用户状态 0-注销 1-正常 2-冻结
+    private String userStatus;
 
     private Date createTime;
 
@@ -41,6 +45,14 @@ public class UserPO implements Serializable {
         this.email = email;
     }
 
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -55,5 +67,16 @@ public class UserPO implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", UserPO.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .add("email='" + email + "'")
+                .add("createTime=" + createTime)
+                .add("updateTime=" + updateTime)
+                .toString();
     }
 }
