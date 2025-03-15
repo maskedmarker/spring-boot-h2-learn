@@ -37,7 +37,57 @@ public class DataSourceAutoConfiguration {}
 
 
 @Import({ DataSourceInitializerInvoker.class, DataSourceInitializationConfiguration.Registrar.class })
-class DataSourceInitializationConfiguration {}
+class DataSourceInitializationConfiguration {
+
+    // 主动向容器注册初始化类DataSourceInitializerPostProcessor
+	static class Registrar implements ImportBeanDefinitionRegistrar {
+
+		private static final String BEAN_NAME = "dataSourceInitializerPostProcessor";
+
+		@Override
+		public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
+				BeanDefinitionRegistry registry) {
+			if (!registry.containsBeanDefinition(BEAN_NAME)) {
+				GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+				beanDefinition.setBeanClass(DataSourceInitializerPostProcessor.class);
+				beanDefinition.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
+				// We don't need this one to be post processed otherwise it can cause a
+				// cascade of bean instantiation that we would rather avoid.
+				beanDefinition.setSynthetic(true);
+				registry.registerBeanDefinition(BEAN_NAME, beanDefinition);
+			}
+		}
+
+	}
+}
+
+class DataSourceInitializerPostProcessor implements BeanPostProcessor, Ordered {
+
+	@Override
+	public int getOrder() {
+		return Ordered.HIGHEST_PRECEDENCE + 1;
+	}
+
+	@Autowired
+	private BeanFactory beanFactory;
+
+	@Override
+	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+		return bean;
+	}
+
+	@Override
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+	    // 在spring的抽象模型里,spring将embedded-database本身看作是datasource.
+	    // 发现embedded-database之后,立即利用DataSourceInitializerInvoker的afterPropertiesSet方法执行初始化脚本
+		if (bean instanceof DataSource) {
+			// force initialization of this bean as soon as we see a DataSource
+			this.beanFactory.getBean(DataSourceInitializerInvoker.class);
+		}
+		return bean;
+	}
+
+}
 
 ```
 
