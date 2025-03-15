@@ -14,10 +14,10 @@ public class H2TcpServer {
         try {
             // Start H2 in TCP Server mode
             TcpServer service = new TcpServer();
-            Server tcpServer = new Server(service, "-tcp", "-tcpAllowOthers", "-tcpPort", "9092", "-ifNotExists", "-trace");
-            service.setShutdownHandler(tcpServer);
-            tcpServer.start();
-            System.out.println("H2 Database Server started and running at: " + tcpServer.getURL());
+            Server h2TcpServer = new Server(service, "-tcp", "-tcpAllowOthers", "-tcpPort", "9092", "-ifNotExists", "-trace");
+            service.setShutdownHandler(h2TcpServer);
+            h2TcpServer.start();
+            System.out.println("H2 Database Server started and running at: " + h2TcpServer.getURL());
         } catch (Exception e) {
             System.err.println("Error starting H2 server: " + e.getMessage());
             e.printStackTrace();
